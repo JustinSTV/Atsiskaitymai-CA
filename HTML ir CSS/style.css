@@ -15,6 +15,10 @@ header, footer{
    padding: 0 10vw;
 }
 
+main > section{
+   padding: 0 10vw;
+}
+
 header{
    display: flex;
    justify-content: space-between;
@@ -53,12 +57,11 @@ header{
 }
 
 main{
-   > section{
-      padding: 0 10vw;
-   }
 
    > section#hero{
       display: flex;
+      height: 45vh;
+      overflow: hidden;
 
       >article{
          width: 75%;
@@ -101,9 +104,27 @@ main{
       }
 
       >img{
-         width: 200px;
          position: relative;
-         right: -15%;
+         right: -35%;
+      }
+   }
+
+   >section#upsell{
+      background: rgb(255,57,152);
+      background: linear-gradient(87deg, rgba(255,57,152,1) 2%, rgba(255,129,57,1) 35%, rgba(255,57,57,1) 92%);
+      margin: 80px 0 0px 0;
+      padding-bottom: 40px;
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+
+      > h1{
+         font-size: 60px;
+         font-weight: 500;
+      }
+      > p{
+         font-size: 20px;
       }
    }
 }
@@ -126,6 +147,10 @@ main{
          > img{
             position: relative;
          }
+      }
+      > section#upsell{
+         margin: 100px;
+         border-radius: 20px;
       }
    }
 
