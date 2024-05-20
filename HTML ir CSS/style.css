@@ -8,7 +8,6 @@ html{
 
 body{
    font-family: 'Inter', sans-serif;
-   height: 500vh;
    overflow-x: hidden;
 }
 
@@ -62,10 +61,8 @@ main{
 
    > section#hero{
       display: flex;
-      overflow: hidden;
 
       >article{
-         width: 75%;
          >h4{
             text-transform: uppercase;
             color: #FF3998;
@@ -85,9 +82,9 @@ main{
             border: none;
             border-radius: 100px;
             padding: 20px 40px;
-            z-index: 1;
+            z-index: 99;
             background: white;
-            overflow: hidden;
+            overflow: visible;
             color: black;
             text-decoration: none;
             font-weight: 600;
@@ -106,8 +103,9 @@ main{
       }
 
       >img{
+         width: 200px;
          position: relative;
-         right: -35%;
+         right: -25%;
       }
    }
 
@@ -271,6 +269,53 @@ main{
    }
 }
 
+footer{
+   >.leftAndRight{
+      >.left{
+         >p{
+            font-size: 20px;
+            color: #555555;
+         }
+         > i{
+            color: #999999;
+            margin-right: 16px;
+         }
+      }
+      >.right{
+         display: flex;
+         justify-content: center;
+         flex-wrap: wrap;
+
+         >.listDiv{
+            color: #555555;
+            flex-basis: calc(50% - 10px);
+            >p{
+               font-weight: 700;
+               text-transform: uppercase;
+            }
+            >ul{
+               padding: 0;
+               list-style: none;
+               >li, a{
+                  color: #555555;
+                  line-height: 25px;
+                  text-decoration: none;
+                  >a:hover{
+                     border-bottom: 2px solid #555555;
+                  }
+               }
+            }
+         }
+      }
+   }
+   >.bottom{
+      color: #999999;
+      > p:nth-last-child(1){
+         display: none;
+      }
+   }
+}
+
 @media (min-width: 750px){
    header{
       > i{
@@ -279,6 +324,11 @@ main{
       >nav{
          display: block;
       }
+   }
+
+   main > section{
+      padding: 0 10vw;
+      margin: 5vw 0;
    }
 
    main{
@@ -319,6 +369,27 @@ main{
             }
          }
       }
-   } 
+   }
+
+   footer{
+      >.leftAndRight{
+         display: flex;
+         justify-content: space-between;
+
+         >.right{
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            gap: 50px;
+         }
+      }
+      >.bottom{
+         display: flex;
+         justify-content: space-between;
+         > p:nth-last-child(1){
+            display: block;
+         }
+      }
+   }
 
 }
