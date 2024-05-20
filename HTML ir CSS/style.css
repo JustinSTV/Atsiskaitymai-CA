@@ -9,6 +9,7 @@ html{
 body{
    font-family: 'Inter', sans-serif;
    height: 500vh;
+   overflow-x: hidden;
 }
 
 header, footer{
@@ -61,7 +62,6 @@ main{
 
    > section#hero{
       display: flex;
-      height: 45vh;
       overflow: hidden;
 
       >article{
@@ -72,6 +72,7 @@ main{
          }
          > h1{
             font-size: 48px;
+            font-weight: 900;
          }
          >p{
             color: #555555;
@@ -151,6 +152,7 @@ main{
       >.cardCon{
          /* visos kortelės */
          display: flex;
+         justify-content: space-evenly;
          gap: 40px;
 
          >.card{
@@ -207,6 +209,64 @@ main{
                }
             }
          }
+         .card:nth-last-child(-n+2){
+            display: none;
+         }
+      }
+   }
+
+   >section#footerUpsell{
+      display: flex;
+      overflow: hidden;
+      border-top: 2px solid #EEEEEE;
+      border-bottom: 2px solid #EEEEEE;
+      padding-top: 10px;
+
+      >article{
+         width: 50%;
+         >h4{
+            text-transform: uppercase;
+            color: #FF3998;
+         }
+         > h1{
+            font-size: 56px;
+            font-weight: 900;
+            width: 270px;
+         }
+         >p{
+            color: #555555;
+            font-size: 20px;
+            padding-bottom: 30px
+         }
+
+         >a{
+            position: relative;
+            border: none;
+            border-radius: 100px;
+            padding: 20px 40px;
+            z-index: 1;
+            background: white;
+            overflow: hidden;
+            color: black;
+            text-decoration: none;
+            font-weight: 600;
+         }
+         >a::before {
+            content: "";
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            bottom: -4px;
+            left: -4px;
+            background: linear-gradient(to right, green, lightgreen);
+            z-index: -1;
+            border-radius: inherit;
+         }
+      }
+      >img{
+         width: 100%;
+         position: relative;
+         right: -15%;
       }
    }
 }
@@ -238,9 +298,27 @@ main{
          display: flex;
          justify-content: space-between;
          >img{
-            width: 20%;
+            width: 15%;
          }
       }
-   }
+      > section#showcase{
+         >.cardCon >.card:nth-last-child(-n+2){
+            display: block;
+         }
+      }
+      > section#footerUpsell{
+         >img{
+            width: 200px;
+         }
+         >article{
+            >h1{
+               width: 600px;
+            }
+            >p{
+               width: 550px;
+            }
+         }
+      }
+   } 
 
 }
