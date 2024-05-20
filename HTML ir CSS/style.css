@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://necolas.github.io/normalize.css/8.0.1/normalize.css');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+html{
+   scroll-behavior: smooth;
+}
+
+body{
+   font-family: 'Inter', sans-serif;
+   height: 500vh;
+}
+
+header, footer{
+   padding: 0 10vw;
+}
+
+header{
+   display: flex;
+   justify-content: space-between;
+   margin: 60px 0;
+
+   >img{
+      width: 150px;
+      object-fit: contain;
+   }
+
+   >i{
+      margin: auto 0;
+      font-size: 32px;
+   }
+
+   > nav{
+      display: none;
+
+      > ul{
+         display: flex;
+         gap: 15px;
+         list-style: none;
+         margin: 0;
+         padding: 0;
+
+         > li, a{
+            color: black;
+            text-decoration: none;
+
+            >a:hover{
+               border-bottom: 2px solid black;
+            }
+         }
+      }
+   }
+}
+
+main{
+   > section{
+      padding: 0 10vw;
+   }
+
+   > section#hero{
+      display: flex;
+
+      >article{
+         width: 75%;
+         >h4{
+            text-transform: uppercase;
+            color: #FF3998;
+         }
+         > h1{
+            font-size: 48px;
+         }
+         >p{
+            color: #555555;
+            font-size: 20px;
+            padding-bottom: 30px
+         }
+
+         >a{
+            position: relative;
+            border: none;
+            border-radius: 100px;
+            padding: 20px 40px;
+            z-index: 1;
+            background: white;
+            overflow: hidden;
+            color: black;
+            text-decoration: none;
+            font-weight: 600;
+         }
+         >a::before {
+            content: "";
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            bottom: -4px;
+            left: -4px;
+            background: linear-gradient(to right, green, lightgreen);
+            z-index: -1;
+            border-radius: inherit;
+         }
+      }
+
+      >img{
+         width: 200px;
+         position: relative;
+         right: -15%;
+      }
+   }
+}
+
+@media (min-width: 750px){
+   header{
+      > i{
+         display: none;
+      }
+      >nav{
+         display: block;
+      }
+   }
+
+   main{
+      > section#hero{
+         > article{
+            width: 50%;
+         }
+         > img{
+            position: relative;
+         }
+      }
+   }
+
+}
