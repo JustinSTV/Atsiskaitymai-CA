@@ -52,7 +52,19 @@ form {
   color: #fff;
 }
 
-
+div#output{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  >div{
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    font-size: 1.1em;
+  }
+}
 
 /* Tablet */
 @media screen and (min-width: 768px) {
@@ -64,5 +76,7 @@ form {
   #submit-btn {
     font-size: 2em;
   }
-
+  div#output{
+    flex-direction: row;
+  }
 }
