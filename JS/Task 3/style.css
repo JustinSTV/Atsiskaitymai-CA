@@ -58,4 +58,15 @@
   padding: 30px;
   border-radius: 5px;
   background-color: #fff;
+  >div{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid gray;
+    padding: 10px;
+    >img{
+      width: 100px;
+      height: 100px;
+    }
+  }
 }
