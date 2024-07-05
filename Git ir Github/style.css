@@ -12,6 +12,7 @@ body {
 }
 
 section {
+   background-image: url('/resources/bg-overlay.png');
    color: white;
    height: 100vh;
    display: flex;
@@ -23,13 +24,22 @@ section {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 100px;
+      position: relative;
 
-      >img {
+      >#imgCon {
          width: 200px;
          height: 200px;
          border: 1px solid white;
          border-radius: 50%;
-         padding: 20px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         >img {
+            width: 100px;
+            height: 100px;
+         }
       }
 
       >div#text {
@@ -56,6 +66,17 @@ section {
                text-decoration: underline dotted;
             }
          }
+      }
+
+      >::before {
+         content: "";
+         position: absolute;
+         left: 50%;
+         top: calc(50% - 55px);
+         height: 100px;
+         width: 2px;
+         background-color: white;
+         z-index: 1;
       }
    }
 }
