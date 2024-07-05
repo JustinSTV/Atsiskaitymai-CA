@@ -33,12 +33,28 @@ section {
       }
 
       >div#text {
+         border: 1px solid white;
+         border-left: none;
+         border-right: none;
+         padding: 20px;
+         margin: 0 20px;
+
          >h2 {
             text-align: center;
+            padding: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 5px;
          }
 
          >p {
             text-align: justify;
+            padding: 20px 0;
+            text-transform: uppercase;
+            font-weight: lighter;
+
+            >span {
+               text-decoration: underline dotted;
+            }
          }
       }
    }
