@@ -5,7 +5,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
       <link rel="stylesheet" href="style.css" />
-      <script src="./main.js"></script>
    </head>
    <body>
       <main>
@@ -23,12 +22,17 @@
                </div>
             </div>
             <div id="menuButtons">
-               <a href="#">Intro</a>
-               <a href="#">Work</a>
-               <a href="#">About</a>
-               <a href="#">Contact</a>
+               <a id="intro" href="#">Intro</a>
+               <a id="work" href="#">Work</a>
+               <a id="about" href="#">About</a>
+               <a id="contact" href="#">Contact</a>
             </div>
          </section>
+         <dialog id="introDialog">Intro content here.</dialog>
+         <dialog id="workDialog">Work content here.</dialog>
+         <dialog id="aboutDialog">About content here.</dialog>
+         <dialog id="contactDialog">Contact content here.</dialog>
       </main>
+      <script src="./main.js"></script>
    </body>
 </html>

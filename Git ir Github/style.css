@@ -117,3 +117,8 @@ section {
       background-color: white;
    }
 }
+
+dialog {
+   width: 50%;
+   border: 2px solid white;
+}
