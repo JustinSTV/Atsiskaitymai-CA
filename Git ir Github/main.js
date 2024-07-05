@@ -3,10 +3,10 @@ const workBtn = document.querySelector("#work")
 const aboutBtn = document.querySelector('#about')
 const contactBtn = document.querySelector("#contact")
 
-const introDialog = document.querySelector("#introDialog");
-const workDialog = document.querySelector("#workDialog");
-const aboutDialog = document.querySelector("#aboutDialog");
-const contactDialog = document.querySelector("#contactDialog");
+const introArticle = document.querySelector("#introArticle");
+const workArticle = document.querySelector("#workArticle");
+const aboutArticle = document.querySelector("#aboutArticle");
+const contactArticle = document.querySelector("#contactArticle");
 
 const section = document.querySelector("section")
 const main = document.querySelector("main")
@@ -14,38 +14,36 @@ const main = document.querySelector("main")
 const closeModalBtn = () => {
    document.querySelectorAll(".closeBtn").forEach(btn => {
       btn.addEventListener('click', () => {
-         const dialogs = document.querySelectorAll("dialog");
-         dialogs.forEach(dialog => {
-            if (dialog.open) {
-               dialog.close();
-               main.append(section)
-            }
+         const articles = document.querySelectorAll("article");
+         articles.forEach(article => {
+            article.classList.remove('show');
+            main.append(section);
          });
-      })
+      });
    })
 }
 
 introBtn.addEventListener("click", () => {
-   section.remove()
-   introDialog.showModal()
-   closeModalBtn()
+   section.remove();
+   introArticle.classList.add('show');
+   closeModalBtn();
 })
 
 
 workBtn.addEventListener("click", () => {
    section.remove()
-   workDialog.showModal()
+   workArticle.classList.add('show')
    closeModalBtn()
 })
 
 aboutBtn.addEventListener("click", () => {
    section.remove()
-   aboutDialog.showModal()
+   aboutArticle.classList.add('show')
    closeModalBtn()
 })
 
 contactBtn.addEventListener("click", () => {
    section.remove()
-   contactDialog.showModal()
+   contactArticle.classList.add('show')
    closeModalBtn()
 })
