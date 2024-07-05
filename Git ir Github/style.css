@@ -8,6 +8,7 @@
 
 body {
    background-image: url("./resources/bg.jpg");
+   background-position: center;
    font-family: "Poppins", sans-serif;
 }
 
@@ -16,17 +17,15 @@ section {
    color: white;
    height: 100vh;
    display: flex;
+   flex-direction: column;
    align-items: center;
    justify-content: center;
-   flex-direction: column;
-   gap: 100px;
 
    >div#hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 100px;
       position: relative;
 
       >#imgCon {
@@ -42,6 +41,12 @@ section {
             width: 100px;
             height: 100px;
          }
+      }
+
+      >div.line {
+         border: 1px solid white;
+         width: 0;
+         height: 5rem;
       }
 
       >div#text {
@@ -70,25 +75,20 @@ section {
          }
       }
 
-      >::before {
-         content: "";
-         position: absolute;
-         left: 50%;
-         top: calc(50% - 55px);
-         height: 100px;
-         width: 2px;
-         background-color: white;
-         z-index: 1;
-      }
-
    }
+
+   >div.line {
+      border: 1px solid white;
+      width: 0;
+      height: 5rem;
+   }
+
 
    >div#menuButtons {
       display: flex;
       flex-direction: column;
       width: 100vw;
-      padding: 0 20px;
-      position: relative;
+      /* padding: 0 20px; */
 
       >a {
          border: 1px solid white;
@@ -105,16 +105,6 @@ section {
          color: gray;
          opacity: 0.5;
       }
-   }
-
-   >::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: -37%;
-      height: 100px;
-      width: 2px;
-      background-color: white;
    }
 }
 
@@ -186,5 +176,47 @@ dialog {
 
    to {
       transform: rotate(90deg)
+   }
+}
+
+@media(min-width: 750px) {
+   section {
+
+      >div#hero {
+         width: 100%;
+         padding: 0 20px;
+
+         >div#text {
+            width: 100%;
+
+            >p {
+               text-align: center;
+            }
+         }
+
+         &::before {
+            display: none;
+         }
+      }
+
+      >div#menuButtons {
+         flex-direction: row;
+         justify-content: center;
+         padding-left: 35px;
+
+         >a {
+            padding: 20px 50px;
+         }
+
+         >a:nth-child(1) {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+         }
+
+         >a:nth-child(4) {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+         }
+      }
    }
 }
