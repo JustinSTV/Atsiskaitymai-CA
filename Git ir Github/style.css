@@ -170,7 +170,7 @@ dialog {
          }
       }
 
-      div#text>p {
+      div.text>p {
          color: white;
          text-align: justify;
          padding: 10px;
