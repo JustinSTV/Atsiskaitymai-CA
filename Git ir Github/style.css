@@ -12,7 +12,7 @@ body {
    font-family: "Poppins", sans-serif;
 }
 
-section {
+section#mainSection {
    background-image: url('/resources/bg-overlay.png');
    color: white;
    height: 100vh;
@@ -115,11 +115,14 @@ main {
    align-items: center;
 }
 
-dialog {
-   width: 60%;
-   margin: auto;
+.show {
+   display: block;
+}
+
+article {
+   display: none;
+   width: 50%;
    background-color: rgba(47, 79, 79, 0.7);
-   overflow: hidden;
    border: none;
 
    >div.mainContent {
@@ -156,7 +159,7 @@ dialog {
 
          >img {
             width: 360px;
-            height: 240;
+            height: 240px;
          }
       }
 
@@ -169,6 +172,7 @@ dialog {
    }
 }
 
+
 @keyframes rotateCloseBtn {
    from {
       transform: rotate(0deg);
@@ -180,7 +184,7 @@ dialog {
 }
 
 @media(min-width: 750px) {
-   section {
+   section#mainSection {
 
       >div#hero {
          width: 100%;
