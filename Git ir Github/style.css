@@ -18,6 +18,8 @@ section {
    display: flex;
    align-items: center;
    justify-content: center;
+   flex-direction: column;
+   gap: 50px;
 
    >div#hero {
       display: flex;
@@ -77,6 +79,23 @@ section {
          width: 2px;
          background-color: white;
          z-index: 1;
+      }
+   }
+
+   >div#menuButtons {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      padding: 0 20px;
+
+      >a {
+         border: 1px solid white;
+         padding: 20px;
+         color: white;
+         text-align: center;
+         text-decoration: none;
+         text-transform: uppercase;
+         font-weight: 300;
       }
    }
 }
