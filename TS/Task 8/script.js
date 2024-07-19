@@ -1,0 +1,45 @@
+"use strict";
+const meterInput = document.querySelector("#meter");
+const outputDiv = document.querySelector("#output");
+meterInput.addEventListener("input", () => {
+    outputDiv.innerHTML = "";
+    const meters = parseFloat(meterInput.value);
+    if (isNaN(meters)) {
+        console.log("enter valid number");
+        const errorMsg = document.createElement("p");
+        errorMsg.textContent = "Enter valid number";
+        outputDiv.appendChild(errorMsg);
+        return;
+    }
+    const centimeters = meters * 100;
+    const inches = meters * 39.37;
+    const feet = meters * 3.281;
+    const miles = meters / 1609;
+    const yards = meters * 1.094;
+    const centimetersStrong = document.createElement("strong");
+    centimetersStrong.textContent = "Centimeters:";
+    const centimetersOutput = document.createElement("p");
+    centimetersOutput.appendChild(centimetersStrong);
+    centimetersOutput.append(` ${centimeters.toFixed(2)} cm`);
+    const inchesStrong = document.createElement("strong");
+    inchesStrong.textContent = "Inches:";
+    const inchesOutput = document.createElement("p");
+    inchesOutput.appendChild(inchesStrong);
+    inchesOutput.append(` ${inches.toFixed(2)} in`);
+    const feetStrong = document.createElement("strong");
+    feetStrong.textContent = "Feet:";
+    const feetOutput = document.createElement("p");
+    feetOutput.appendChild(feetStrong);
+    feetOutput.append(` ${feet.toFixed(2)} ft`);
+    const milesStrong = document.createElement("strong");
+    milesStrong.textContent = "Miles:";
+    const milesOutput = document.createElement("p");
+    milesOutput.appendChild(milesStrong);
+    milesOutput.append(` ${miles.toFixed(2)} mi`);
+    const yardsStrong = document.createElement("strong");
+    yardsStrong.textContent = "Yards:";
+    const yardsOutput = document.createElement("p");
+    yardsOutput.appendChild(yardsStrong);
+    yardsOutput.append(` ${yards.toFixed(2)} yd`);
+    outputDiv.append(centimetersOutput, inchesOutput, feetOutput, milesOutput, yardsOutput);
+});

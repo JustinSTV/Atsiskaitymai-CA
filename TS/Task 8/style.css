@@ -26,7 +26,15 @@ form {
   max-width: 80%;
   margin: 50px auto;
   display: flex;
+  align-items: center;
+  gap: 10px;
   flex-wrap: wrap;
+
+  >input[type='number']{
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+  }
 }
 
 #search {
@@ -51,6 +59,14 @@ form {
   background-color: #000;
   color: #fff;
 }
+
+#output{
+  padding: 20px;
+  background-color: white;
+  margin: 10px;
+  border-radius: 10px;
+}
+
 
 /* Tablet */
 @media screen and (min-width: 768px) {
