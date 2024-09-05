@@ -9,7 +9,8 @@ export type UserType = {
   password: string,
   passwordRepeat: string,
   passwordVisable: string,
-  dob: string
+  dob: string,
+  profilePicture: string | "https://i.sstatic.net/l60Hf.png"
 }
 
 export type UserContextType = {

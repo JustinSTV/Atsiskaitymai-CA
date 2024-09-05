@@ -12,6 +12,23 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
 
+  >div.userButtons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+
+    >div.nameAndPfp{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      >img{
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
 `;
 
 const Header = () => {
@@ -34,7 +51,10 @@ const Header = () => {
         {
           loggedInUser ? 
           <>
-            <p>Weclome, {loggedInUser.username}</p>
+            <div className="nameAndPfp">
+              <img src={loggedInUser.profilePicture} alt={loggedInUser.username} />
+              <p>Weclome, {loggedInUser.username}</p>
+            </div>
             <button
               onClick={() => {
                 logoutUser()

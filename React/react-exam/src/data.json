@@ -17,13 +17,14 @@
   ],
   "user": [
     {
-      "id": "bb121b24-204c-4932-ad3d-b91b9d9bb30b",
-      "username": "testas",
-      "email": "testas@testas.com",
-      "password": "$2a$10$pC6dnS6IuE5cd3rBCuIBCO8spxd8efeywxr9mTf5iUJgzQqhmQHx6",
-      "passwordRepeat": "testas",
-      "passwordVisable": "testas",
-      "dob": "2024-09-13"
+      "id": "05efbf4a-3fe9-4b4b-bc55-f771ea524edb",
+      "username": "hey",
+      "email": "hey@hey.com",
+      "password": "$2a$10$e.TEey25lczggHN9DrNdvuA.mUiDX.RjKBfvrdKvqO4MD8EZqvKjy",
+      "passwordRepeat": "hey",
+      "passwordVisable": "hey",
+      "dob": "2024-09-02",
+      "profilePicture": "https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-1.jpg"
     }
   ]
 }

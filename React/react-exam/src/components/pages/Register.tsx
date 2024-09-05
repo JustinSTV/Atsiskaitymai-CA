@@ -16,7 +16,8 @@ const Register = () => {
     email: '',
     password: '',
     passwordRepeat: '',
-    dob: ''
+    dob: '',
+    profilePicture: ''
   })
 
   const [error, setError] = useState<string | null>(null);
@@ -42,7 +43,9 @@ const Register = () => {
       return;
     }
 
-    const hashedPassword = bcrypt.hashSync(inputFields.password, 10)
+    const hashedPassword = bcrypt.hashSync(inputFields.password, 10);
+
+    const defaultProfilePicture = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"
 
     const newUser = {
       id: generateID(),
@@ -51,7 +54,8 @@ const Register = () => {
       password: hashedPassword,
       passwordRepeat: inputFields.passwordRepeat,
       passwordVisable: inputFields.passwordRepeat,
-      dob: inputFields.dob
+      dob: inputFields.dob,
+      profilePicture: inputFields.profilePicture || defaultProfilePicture
     }
 
     addNewUser(newUser);
@@ -100,11 +104,20 @@ const Register = () => {
           />
         </div>
         <div>
-          <label htmlFor="dob">Date of Birth</label>
+          <label htmlFor="dob">Date of Birth:</label>
           <input 
             type="date" 
             name='dob' id='dob'
             value={inputFields.dob}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="profilePicture">Profile Picture:</label>
+          <input
+            type="text"
+            name="profilePicture" id='profilePicture'
+            value={inputFields.profilePicture}
             onChange={handleInputChange}
           />
         </div>
