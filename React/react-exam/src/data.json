@@ -17,14 +17,6 @@
   ],
   "user": [
     {
-      "id": "d1fd2fd41d24e1efe",
-      "username": "admin",
-      "password": "",
-      "passwordVisible": "admin",
-      "email": "admin@admin.com",
-      "dob": "2002-03-20"
-    },
-    {
       "id": "bb121b24-204c-4932-ad3d-b91b9d9bb30b",
       "username": "testas",
       "email": "testas@testas.com",

@@ -2,7 +2,7 @@ import { createContext, useReducer, useEffect, useState } from "react";
 
 type ChildrenType = { children: React.ReactElement };
 
-type UserType = {
+export type UserType = {
   id: string,
   username: string,
   email: string,
@@ -43,7 +43,7 @@ const UserProvider = ({children}: ChildrenType) => {
   
   const [loggedInUser, setLoggedInUser] = useState<UserType|null>(null)
   const loginUser = (user: UserType) => {
-    setLoggedInUser(user)
+    setLoggedInUser(user);
   }
   const logoutUser = () => {
     setLoggedInUser(null)

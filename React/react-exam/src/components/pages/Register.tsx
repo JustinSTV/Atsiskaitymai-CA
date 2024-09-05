@@ -9,7 +9,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const { addNewUser, setLoggedInUser } = useContext(UserContext) as UserContextType;
+  const { user, addNewUser, setLoggedInUser } = useContext(UserContext) as UserContextType;
 
   const [inputFields, setInputFields] = useState({
     username: '',
@@ -33,6 +33,12 @@ const Register = () => {
 
     if (inputFields.password !== inputFields.passwordRepeat) {
       setError("Passwords do not match");
+      return;
+    }
+
+    const userExists = user.some(user => user.email === inputFields.email || user.username === inputFields.username);
+    if (userExists) {
+      setError("User already exists");
       return;
     }
 

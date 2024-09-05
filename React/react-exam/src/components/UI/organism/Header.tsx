@@ -1,5 +1,8 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
+import UserContext, {UserContextType} from "../../../contexts/UserContext";
 
 const StyledHeader = styled.header`
   height: 80px;
@@ -12,6 +15,10 @@ const StyledHeader = styled.header`
 `;
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const { loggedInUser, logoutUser } = useContext(UserContext) as UserContextType;
+
   return (
     <StyledHeader>
       <div className="logo">
@@ -24,8 +31,23 @@ const Header = () => {
         </ul>
       </nav>
       <div className="userButtons">
-        <button>Login</button>
-        <button><Link to='/register'>Register</Link></button>
+        {
+          loggedInUser ? 
+          <>
+            <p>Weclome, {loggedInUser.username}</p>
+            <button
+              onClick={() => {
+                logoutUser()
+                navigate('/')
+              }}
+            >
+              Log Out</button>
+          </> :
+          <>
+            <button><Link to='/login'>Login</Link></button>
+            <button><Link to='/register'>Register</Link></button>
+          </>
+        }
       </div>
     </StyledHeader>
   );
