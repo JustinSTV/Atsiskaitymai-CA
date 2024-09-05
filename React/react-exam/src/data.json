@@ -25,6 +25,16 @@
       "passwordVisable": "hey",
       "dob": "2024-09-02",
       "profilePicture": "https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-1.jpg"
+    },
+    {
+      "id": "1fa6380b-f210-4d34-951a-04502279d7c3",
+      "username": "testas",
+      "email": "testas@testas.com",
+      "password": "$2a$10$eH1MaVAN2tMwVeng7biR0.haoh0j3ZXkvOZ8h6aJm/58up4PTmcDC",
+      "passwordRepeat": "Testas",
+      "passwordVisable": "Testas",
+      "dob": "2001-02-07",
+      "profilePicture": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"
     }
   ]
 }
