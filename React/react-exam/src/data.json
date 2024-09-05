@@ -1,1 +1,37 @@
-{}
+{
+  "posts": [
+    {
+      "id": "4sd6f4gd6fs1",
+      "authorId": "1",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deleniti blanditiis numquam. Dignissimos, provident ab at et iste odit similique, repudiandae delectus, iure corporis quae! Dolores porro laboriosam consequatur ipsa.",
+      "attachedImage": "https://cdn.britannica.com/01/221301-050-5E5AA1AA/publicity-still-from-Pinocchio-1940.jpg",
+      "dateTime": "2024-08-11T08:23:58.179Z"
+    },
+    {
+      "id": "4sd6f4gasdfd6fs1",
+      "authorId": "2",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deleniti blanditiis numquam. Dignissimos, provident ab at et iste odit similique, repudiandae delectus, iure corporis quae! Dolores porro laboriosam consequatur ipsa.",
+      "attachedImage": "https://static.wikia.nocookie.net/disney/images/f/f2/Profile_-_Nemo.jpg",
+      "dateTime": "2024-08-10T06:20:58.179Z"
+    }
+  ],
+  "user": [
+    {
+      "id": "d1fd2fd41d24e1efe",
+      "username": "admin",
+      "password": "",
+      "passwordVisible": "admin",
+      "email": "admin@admin.com",
+      "dob": "2002-03-20"
+    },
+    {
+      "id": "bb121b24-204c-4932-ad3d-b91b9d9bb30b",
+      "username": "testas",
+      "email": "testas@testas.com",
+      "password": "$2a$10$pC6dnS6IuE5cd3rBCuIBCO8spxd8efeywxr9mTf5iUJgzQqhmQHx6",
+      "passwordRepeat": "testas",
+      "passwordVisable": "testas",
+      "dob": "2024-09-13"
+    }
+  ]
+}
