@@ -2,8 +2,53 @@ import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { v4 as generateID } from 'uuid';
 import bcrypt from 'bcryptjs'
+import styled from 'styled-components';
 
 import UserContext, { UserContextType } from '../../contexts/UserContext';
+
+const StyledSection = styled.section`
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  >form{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 50px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+
+    >div{
+      width: 80%;
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      >input{
+        padding: 10px 20px;
+      }
+      >p{
+        color: red;
+        font-weight: bold;
+      }
+    }
+    >input[type="submit"]{
+      width: 80%;
+      cursor: pointer;
+      padding: 15px 30px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+      background-color: #bb2637;
+      font-size: 14px;
+      color: white;
+    }
+  }
+`;
 
 const Register = () => {
 
@@ -102,9 +147,7 @@ const Register = () => {
   }
 
   const blurHandle = (event: React.FocusEvent<HTMLInputElement>) => {
-
     const fieldName = event.target.name;
-    console.log(fieldName)
     const validateField = registerErrorChecking[fieldName]
 
     if(fieldName){
@@ -112,8 +155,6 @@ const Register = () => {
         ...error,
         [fieldName]: validateField(event.target.value, inputFields.password),
       })
-    } else{
-      console.error(`No validation function found for ${fieldName}`);
     }
   }
 
@@ -159,7 +200,7 @@ const Register = () => {
   }
 
   return (
-    <section>
+    <StyledSection>
       <h2>Create An Account</h2>
       <form onSubmit={handleFormSubmit}>
         <div>
@@ -235,7 +276,7 @@ const Register = () => {
       </form>
       {error.userExists && <p>{error.userExists}</p>}
       <p>Have an Account already?<Link to="/login">Login</Link></p>
-    </section>
+    </StyledSection>
   );
 }
  
