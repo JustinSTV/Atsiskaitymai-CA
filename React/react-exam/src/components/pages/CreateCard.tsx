@@ -7,7 +7,41 @@ import CardContext, { CardContextType} from "../../contexts/CardContext";
 import UserContext, {UserContextType} from "../../contexts/UserContext";
 
 const StyledSection = styled.section`
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+
+  >form{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 50px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    >div{
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      >input, textarea{
+        padding: 10px 20px;
+      }
+    }
+    >input[type="submit"]{
+      width: 80%;
+      cursor: pointer;
+      padding: 15px 30px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+      background-color: #bb2637;
+      font-size: 14px;
+      color: white;
+    }
+  }
 `;
 
 const CreateCard = () => {
@@ -55,7 +89,9 @@ const CreateCard = () => {
     <StyledSection>
       {
         loggedInUser ? (
-          <form onSubmit={handleSubmit}>
+          <>
+            <h2>Create Post</h2>
+            <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="title">Title:</label>
             <input
@@ -87,8 +123,9 @@ const CreateCard = () => {
               onChange={handleChange}
             />
           </div>
-          <button type="submit">Submit</button>
+          <input type="submit" value="Create Post"/>
         </form>
+          </>
         ) : (
           <p>Please log in to create post</p>
         )
