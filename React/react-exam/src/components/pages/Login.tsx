@@ -6,26 +6,65 @@ import styled from "styled-components";
 import UserContext, {UserContextType} from "../../contexts/UserContext";
 
 const StyledSection = styled.section`
-  
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  >form{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 50px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    >div{
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      >input{
+        padding: 10px 20px;
+      }
+    }
+    >input[type="submit"]{
+      width: 80%;
+      cursor: pointer;
+      padding: 15px 30px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+      background-color: #bb2637;
+      font-size: 14px;
+      color: white;
+    }
+  }
 `;
+
+const Notification = styled.p<{success: boolean}>`
+  font-weight: bold;
+  color: ${props => props.success ? 'green' : 'red'};
+`
 
 const Login = () => {
   const navigate = useNavigate();
-
   const { user, loginUser } = useContext(UserContext) as UserContextType;
-
-  const [error, setError] = useState('');
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
   })
+  const [error, setError] = useState('');
+  const [notification, setNotification] = useState('');
 
   
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({
       ...inputs,
       [event.target.name]: event.target.value
-    })
+    });
+    setError('')
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -36,13 +75,16 @@ const Login = () => {
     if(foundUser){
       const isPasswordMatch = bcrypt.compareSync(inputs.password, foundUser.password);
       if(isPasswordMatch){
+        setNotification('Successfuly logged in!')
         loginUser(foundUser)
-        navigate('/')
+        setTimeout(() => {
+          navigate('/');
+        }, 1500);
       } else {
         setError("Login failed: Invalid credentials");
       }
     } else{
-      setError("Login failed: Invalid credentials");
+      setError("Login failed: User Not Found");
     }
   }
 
@@ -70,7 +112,8 @@ const Login = () => {
         </div>
         <input type="submit" value="Login" />
       </form>
-    {error && <p>{error}</p>}
+    {notification && <Notification success>{notification}</Notification>}
+    {error && <Notification success={false}>{error}</Notification>}
     <p>Don't have an account? Create an <Link to="/register">Account</Link></p>
   </StyledSection>
   );
