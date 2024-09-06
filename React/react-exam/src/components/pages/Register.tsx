@@ -184,7 +184,8 @@ const Register = () => {
         passwordRepeat: inputFields.passwordRepeat,
         passwordVisable: inputFields.passwordRepeat,
         dob: inputFields.dob,
-        profilePicture: inputFields.profilePicture || defaultProfilePicture
+        profilePicture: inputFields.profilePicture || defaultProfilePicture,
+        savedPosts: []
       }
 
       addNewUser(newUser);

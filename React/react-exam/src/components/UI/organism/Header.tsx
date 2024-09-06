@@ -71,6 +71,7 @@ const StyledHeader = styled.header`
       >img{
         width: 50px;
         height: 50px;
+        border-radius: 50px;
       }
     }
   }

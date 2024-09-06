@@ -31,9 +31,16 @@ type OneCardType = {
 
 const OneCard = ({ card }: OneCardType) => {
 
-  const { getSpecificUser } = useContext(UserContext) as UserContextType;
+
+  const { getSpecificUser, savePost, loggedInUser } = useContext(UserContext) as UserContextType;
 
   const thisUser = getSpecificUser(card.authorId)!;
+
+  const handleSavePost = () => {
+    if (loggedInUser) {
+      savePost(card.id);
+    }
+  };
 
   return (
     <CardContainer>
@@ -49,6 +56,14 @@ const OneCard = ({ card }: OneCardType) => {
         <h2>{card.title}</h2>
         <p>{card.description}</p>
       </div>
+      {
+        loggedInUser ? 
+          <button onClick={handleSavePost}>
+            {loggedInUser.savedPosts.includes(card.id) ? "Unsave Post" : "Save Post"}
+          </button>
+        :
+        <></>
+      }
     </CardContainer>
   );
 }

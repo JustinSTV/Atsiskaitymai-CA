@@ -1,58 +1,46 @@
 {
   "posts": [
     {
-      "id": "595eb1d9-65af-4573-99b0-e88430478d5f",
-      "authorId": "1fa6380b-f210-4d34-951a-04502279d7c3",
-      "title": "labas",
-      "description": "atr",
-      "image": "",
-      "dateTime": "2024-09-06T07:31:02.294Z"
-    },
-    {
-      "id": "bca6ca96-130a-4a09-8c1b-2949d7c78f10",
-      "authorId": "1fa6380b-f210-4d34-951a-04502279d7c3",
-      "title": "testo testas",
-      "description": "laba diena",
-      "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-iphone15hero-202309_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1693086369781",
-      "dateTime": "2024-09-06T08:25:42.027Z"
-    },
-    {
-      "id": "eebbf70c-70e1-4798-845c-14d4395e9212",
-      "authorId": "05efbf4a-3fe9-4b4b-bc55-f771ea524edb",
-      "title": "dar vienas testas",
+      "id": "42b4578e-9ab4-4e67-9e97-a793e432825b",
+      "authorId": "a3866826-c703-4e22-9252-e0d85082c7ac",
+      "title": "labadiena",
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam optio similique perferendis quos quaerat accusantium consequatur ab numquam dolorum enim at labore sunt harum rem officia sequi nihil saepe quia, delectus temporibus repellat, reiciendis unde placeat minus? Magnam eligendi nostrum sunt animi? Quia voluptates quas possimus nulla animi veritatis veniam!",
-      "image": "https://facts.net/wp-content/uploads/2023/09/21-facts-about-peter-griffin-family-guy-1693614250.jpg",
-      "dateTime": "2024-09-06T09:06:33.454Z"
+      "image": "https://images.kaina24.lt/9/68/acer-nitro-5-515.jpg",
+      "dateTime": "9/6/2024 12:51:15 PM"
     },
     {
-      "id": "88ac5847-adfb-4ede-b08d-783db63d3e98",
-      "authorId": "1fa6380b-f210-4d34-951a-04502279d7c3",
+      "id": "b407239e-5890-4c08-a347-e2eec71d5fba",
+      "authorId": "b1d69c9e-d298-4619-9853-46c6089c878b",
       "title": "testas",
-      "description": "testas",
-      "image": "",
-      "dateTime": "9/6/2024 12:24:37 PM"
+      "description": "testas testas",
+      "image": "https://facts.net/wp-content/uploads/2023/09/21-facts-about-peter-griffin-family-guy-1693614250.jpg",
+      "dateTime": "9/6/2024 1:01:52 PM"
     }
   ],
   "user": [
     {
-      "id": "05efbf4a-3fe9-4b4b-bc55-f771ea524edb",
-      "username": "hey",
-      "email": "hey@hey.com",
-      "password": "$2a$10$e.TEey25lczggHN9DrNdvuA.mUiDX.RjKBfvrdKvqO4MD8EZqvKjy",
-      "passwordRepeat": "hey",
-      "passwordVisable": "hey",
-      "dob": "2024-09-02",
-      "profilePicture": "https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-1.jpg"
-    },
-    {
-      "id": "1fa6380b-f210-4d34-951a-04502279d7c3",
+      "id": "a3866826-c703-4e22-9252-e0d85082c7ac",
       "username": "testas",
       "email": "testas@testas.com",
-      "password": "$2a$10$eH1MaVAN2tMwVeng7biR0.haoh0j3ZXkvOZ8h6aJm/58up4PTmcDC",
+      "password": "$2a$10$C.mA.SFRJb47uWzkEaADA.1kYPDhzfEea8bicfgXFWAGAj6i2s/zq",
       "passwordRepeat": "Testas",
       "passwordVisable": "Testas",
-      "dob": "2001-02-07",
-      "profilePicture": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"
+      "dob": "2000-01-04",
+      "profilePicture": "https://facts.net/wp-content/uploads/2023/09/21-facts-about-peter-griffin-family-guy-1693614250.jpg",
+      "savedPosts": [
+        "42b4578e-9ab4-4e67-9e97-a793e432825b"
+      ]
+    },
+    {
+      "id": "b1d69c9e-d298-4619-9853-46c6089c878b",
+      "username": "justas",
+      "email": "justas@justas.com",
+      "password": "$2a$10$NZdmJUNTNGD.vzSu.zSgLe.wlArAyjt9spyGYFMGUrO9igXCbUf4G",
+      "passwordRepeat": "Justas",
+      "passwordVisable": "Justas",
+      "dob": "1985-10-23",
+      "profilePicture": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png",
+      "savedPosts": []
     }
   ]
 }
