@@ -1,8 +1,28 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { CardType } from "../../../contexts/CardContext";
 
+import UserContext, {UserContextType} from "../../../contexts/UserContext";
+import PostHeader from "../molecule/PostHeader";
+
 const CardContainer = styled.div`
-  // Add your styles here
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #fff;
+  width: 60%;
+
+  >div.imageAndContent{
+    >img{
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    >h2, p{
+      margin: 10px 0;
+    }
+  }
 `;
 
 type OneCardType = {
@@ -10,10 +30,25 @@ type OneCardType = {
 }
 
 const OneCard = ({ card }: OneCardType) => {
+
+  const { getSpecificUser } = useContext(UserContext) as UserContextType;
+
+  const thisUser = getSpecificUser(card.authorId)!;
+
   return (
     <CardContainer>
-      <img src={card.attachedImage} alt="Card Image" />
-      <h2>{card.authorId}</h2>
+      <PostHeader
+        thisUser={thisUser}
+        date={card.dateTime}
+      />
+      <div className="imageAndContent">
+        {
+          card.image &&
+          <img src={card.image} alt="Card Image" />
+        }
+        <h2>{card.title}</h2>
+        <p>{card.description}</p>
+      </div>
     </CardContainer>
   );
 }

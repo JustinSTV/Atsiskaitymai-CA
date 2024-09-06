@@ -19,7 +19,8 @@ export type UserContextType = {
   setLoggedInUser: React.Dispatch<React.SetStateAction<UserType | null>>
   addNewUser: (newUser: UserType) => void,
   loginUser: (user: UserType) => void,
-  logoutUser: () => void
+  logoutUser: () => void,
+  getSpecificUser: (id: string) => UserType | undefined
 }
 
 type ReducerActionTypes = 
@@ -75,6 +76,10 @@ const UserProvider = ({children}: ChildrenType) => {
       }))
   }, [])
 
+  const getSpecificUser = (id: string): UserType | undefined => {
+    return user.find(oneUser => oneUser.id === id)
+  }
+
   return(
     <UserContext.Provider
       value={{
@@ -83,8 +88,8 @@ const UserProvider = ({children}: ChildrenType) => {
         setLoggedInUser,
         addNewUser,
         loginUser,
-        logoutUser
-        
+        logoutUser,
+        getSpecificUser
       }}
     >
       {children}
