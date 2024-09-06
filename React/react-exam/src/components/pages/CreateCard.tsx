@@ -44,7 +44,7 @@ const CreateCard = () => {
       title: formData.title,
       description: formData.description,
       image: formData.image,
-      dateTime: new Date().toISOString()
+      dateTime: `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`
     }
 
     createNewPost(newPost)
