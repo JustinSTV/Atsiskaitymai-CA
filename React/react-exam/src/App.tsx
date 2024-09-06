@@ -5,6 +5,7 @@ import Home from './components/pages/Home'
 import Register from './components/pages/Register'
 import Login from './components/pages/Login'
 import UserPage from './components/pages/UserPage'
+import CreateCard from './components/pages/CreateCard'
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
       <Route path='login' element={<Login/>}/>
         <Route index element={<Home />} />
         <Route path='userPage' element={<UserPage />}/>
+        <Route path='addPost' element={<CreateCard />}/>
       </Route>
     </Routes>
   )
