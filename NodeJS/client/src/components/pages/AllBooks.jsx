@@ -27,6 +27,7 @@ const StyledSection = styled.section`
     padding: 20px;
   }
   >div.pagination{
+    margin-bottom: 10px;
     grid-area: 5 / 2 / 6 / 4;
     place-self: center;
     color: white;
