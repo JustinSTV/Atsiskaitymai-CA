@@ -52,6 +52,10 @@ app.get('/allBooks', async (req, res) => {
     });
   }
 
+  if (req.query.page) {
+    const page = Number(req.query.page);
+    settings.skip = (page - 1) * settings.limit;
+  }
 
   console.log("apply'inti settings", settings.filter);
 
