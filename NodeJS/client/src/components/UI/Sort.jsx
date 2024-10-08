@@ -1,6 +1,25 @@
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  >button{
+    color: white;
+    background-color: #427676;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+  }
+`;
+
 const Sort = ({ fetchSorted }) => {
   return (
-    <div>
+    <StyledDiv>
       <button
         value={'rating=1'}
         onClick={fetchSorted}
@@ -25,7 +44,7 @@ const Sort = ({ fetchSorted }) => {
         value={'publishDate=-1'}
         onClick={fetchSorted}
       >Publish date DESC</button>
-    </div>
+    </StyledDiv>
   );
 }
 

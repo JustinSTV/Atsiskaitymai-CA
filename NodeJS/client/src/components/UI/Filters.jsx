@@ -1,6 +1,56 @@
+import styled from "styled-components";
+
+const StyledForm = styled.form`
+  height: 100%;
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  >div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    >input{
+      padding: 10px;
+      border-radius: 5px;
+      border: 0.5px solid black;
+    }
+
+    >fieldset{
+      padding: 10px;
+      border-radius: 5px;
+      >div{
+        margin: 5px 0;
+        >input[type='checkbox']{
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+  > div:nth-child(5){
+    display: block;
+    >input[type='checkbox']{
+      margin: 0 10px;
+    }
+  }
+  >input[type='submit']{
+    border: none;
+    color: white;
+    background-color: #427676;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 50%;
+    cursor: pointer;
+  }
+`;
+
 const Filters = ({ fetchFiltered, formInputControl, formInputs }) => {
   return (
-    <form onSubmit={fetchFiltered}>
+    <StyledForm onSubmit={fetchFiltered}>
       <div>
         <label htmlFor="title">Title:</label>
         <input
@@ -81,7 +131,7 @@ const Filters = ({ fetchFiltered, formInputControl, formInputs }) => {
         />
       </div>
       <input type="submit" value="Filter" />
-    </form>
+    </StyledForm>
   );
 }
 

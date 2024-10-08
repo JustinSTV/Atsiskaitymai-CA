@@ -21,7 +21,7 @@ app.get('/allBooks', async (req, res) => {
     filter: {},
     order: {},
     skip: 0,
-    limit: 10,
+    limit: 8,
   };
 
   console.log('parameters:', req.query);

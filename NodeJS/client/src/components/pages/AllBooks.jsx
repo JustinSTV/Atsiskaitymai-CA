@@ -7,21 +7,44 @@ import Filters from "../UI/Filters";
 
 const StyledSection = styled.section`
   display: grid;
-  gap: 5px;
-  grid-template-columns: 200px repeat(2, 1fr);
-  grid-template-rows: 150px repeat(4, 1fr);
+  grid-template-columns: 300px repeat(2, 1fr);
+  grid-template-rows: 100px repeat(2, 1fr) 100px;
 
   >div.sorting{
     grid-area: 1 / 2 / 2 / 4;
-    border: solid black;
+    width: 100%;
   }
   >div.filtering{
-    grid-area: 1 / 1 / 6 / 2; 
-    border: solid black;
+    grid-area: 1 / 1 / 5 / 2; 
   }
   >div.data{
-    grid-area: 2 / 2 / 6 / 4; 
-    border: solid black;
+    height: 100vh;
+    grid-area: 2 / 2 / 5 / 4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    padding: 20px;
+  }
+  >div.pagination{
+    grid-area: 5 / 2 / 6 / 4;
+    place-self: center;
+    color: white;
+    >span{
+      margin: 0 10px;
+    }
+    >button{
+      color: white;
+      background-color: #427676;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    >button:disabled{
+      background-color: rgb(66, 118, 118, 0.2);
+      cursor: default;
+    }
   }
 `;
 
@@ -46,18 +69,18 @@ const AllBooks = () => {
   const formInputControl = (e) => {
     if (e.target.type === 'checkbox') {
       if (e.target.name === 'genres_in') {
-        if (e.target.checked) { // Add genre
+        if (e.target.checked) { // pridedam žanra
           setFormInputs({
             ...formInputs,
             [e.target.name]: [...formInputs.genres_in, e.target.value]
           });
-        } else { // Remove genre
+        } else { // pašalinam žanra
           setFormInputs({
             ...formInputs,
             [e.target.name]: formInputs.genres_in.filter(genre => genre !== e.target.value)
           });
         }
-      } else { // Handle 'available' checkbox
+      } else {
         setFormInputs({
           ...formInputs,
           [e.target.name]: e.target.checked
@@ -129,7 +152,7 @@ const AllBooks = () => {
       });
   }
 
-  const totalPages = Math.ceil(totalBooks / 10)
+  const totalPages = Math.ceil(totalBooks / 8)
 
   return (
     <StyledSection>
