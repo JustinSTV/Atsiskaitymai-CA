@@ -75,3 +75,14 @@ app.get('/allBooks', async (req, res) => {
   client.close();
   res.status(200).send({ totalBooks, data});
 });
+
+app.get('/book/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const client = await MongoClient.connect(CONNECT_URL);
+  const collection = client.db('atsiskaitymas').collection('books');
+
+  const book = await collection.findOne({ _id: id });
+  client.close();
+  res.status(200).send(book);
+});
