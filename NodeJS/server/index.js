@@ -24,29 +24,46 @@ app.get('/allBooks', async (req, res) => {
     limit: 10,
   };
 
-  console.log('Query parameters:', req.query);
+  console.log('parameters:', req.query);
 
-  Object.keys(req.query).forEach(key => {
-    const keyValue = key.split('_')[0]; //? sort arba filter
-    if (keyValue === 'sort') {
-      //?pasiemu sort
-      //? 1 = asc, -1 desc
-      settings.order = { [key.split('_')[1]]: Number(req.query[key]) } 
-      console.log('sorting', settings.order = { [key.split('_')[1]]: Number(req.query[key]) })
-    }
+  if (Object.keys(req.query).length) {
+    Object.keys(req.query).forEach(key => {
+      const keyValue = key.split('_')[0]; //? sort arba filter
+      // 1 = asc
+      //  2 = dsec
+      if (keyValue === 'sort') {
+        settings.order = { [key.split('_')[1]]: Number(req.query[key]) };
+      } else if (keyValue === 'filter') {
+        if (!key.split('_')[2]) {
+          settings.filter[key.split('_')[1]] = { $regex: new RegExp(req.query[key], 'i') };
+        } else {
+          const option = '$' + key.split('_')[2];
+          if (!settings.filter[key.split('_')[1]]) {
+            if (key.split('_')[1] === 'genres') {
+              settings.filter[key.split('_')[1]] = { $in: req.query[key].split(',') };
+            } else {
+              settings.filter[key.split('_')[1]] = { [option]: Number(req.query[key]) };
+            }
+          } else {
+            settings.filter[key.split('_')[1]][option] = Number(req.query[key]);
+          }
+        }
+      }
+    });
+  }
 
-  });
 
-  console.log("apply'inti settings", settings);
+  console.log("apply'inti settings", settings.filter);
 
   const client = await MongoClient.connect(CONNECT_URL);
-
   const data = await client.db('atsiskaitymas').collection('books').aggregate([
-    Object.keys(settings.order).length ? { $sort: settings.order } : { $sort: { title: 1 } },
+    Object.keys(settings.order).length ? { $sort: settings.order } : { $sort: { publishDate: -1} },
     { $skip: settings.skip },
     { $limit: settings.limit },
   ]).toArray();
 
-  res.send(data);
+  // console.log('data returned: ', data)
+
   client.close();
+  res.status(200).send(data);
 });
