@@ -29,13 +29,16 @@ const StyledSection = styled.section`
 const AllBooks = () => {
 
   const [books, setBooks] = useState([]);
+  const [totalBooks, setTotalBooks] = useState(0);
   const [formInputs, setFormInputs] = useState({
     title: '',
     genres_in: [],
     publishDate_gte: '',
     publishDate_lte: '',
     available: false,
-  })
+  });
+
+  const [currentPage, setCurrentPage] = useState(1)
 
   let sortString = useRef('');
   let filterString = useRef('');
@@ -89,23 +92,44 @@ const AllBooks = () => {
         }
       }
     });
-    fetch(`http://localhost:5500/allBooks?${filterString.current}&${sortString.current}`)
+    fetch(`http://localhost:5500/allBooks?${filterString.current}&${sortString.current}&page=${currentPage}`)
       .then(res => res.json())
-      .then(data => setBooks(data));
-  }
+      .then(({ totalBooks, data }) => {
+        setTotalBooks(totalBooks);
+        setBooks(data);
+      });
+  };
 
   useEffect(() => {
     fetch('http://localhost:5500/allBooks')
       .then(res => res.json())
-      .then(data => setBooks(data))
-  }, [])
+      .then(({ totalBooks, data }) => {
+        setTotalBooks(totalBooks);
+        setBooks(data);
+      });
+  }, []);
 
   const fetchSorted = (e) => {
     sortString.current = `sort_${e.target.value}`;
-    fetch(`http://localhost:5500/allBooks?${filterString.current}&${sortString.current}`)
+    fetch(`http://localhost:5500/allBooks?${filterString.current}&${sortString.current}&page=${currentPage}`)
       .then((res) => res.json())
-      .then((data) => setBooks(data));
+      .then(({ totalBooks, data }) => {
+        setTotalBooks(totalBooks);
+        setBooks(data);
+      });
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    fetch(`http://localhost:5500/allBooks?${filterString.current}&${sortString.current}&page=${newPage}`)
+      .then((res) => res.json())
+      .then(({ totalBooks, data }) => {
+        setTotalBooks(totalBooks);
+        setBooks(data);
+      });
   }
+
+  const totalPages = Math.ceil(totalBooks / 10)
 
   return (
     <StyledSection>
@@ -129,6 +153,15 @@ const AllBooks = () => {
             <p>No Books Available</p>
           )
         }
+      </div>
+      <div className="pagination">
+        <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span>Page {currentPage} of {totalPages}</span>
+        <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+          Next
+        </button>
       </div>
     </StyledSection>
   );

@@ -1,5 +1,5 @@
 import express from 'express';
-import { MongoClient } from 'mongodb';
+import { Collection, MongoClient } from 'mongodb';
 import cors from 'cors';
 import 'dotenv/config';
 
@@ -60,7 +60,10 @@ app.get('/allBooks', async (req, res) => {
   console.log("apply'inti settings", settings.filter);
 
   const client = await MongoClient.connect(CONNECT_URL);
-  const data = await client.db('atsiskaitymas').collection('books').aggregate([
+  const collection = client.db('atsiskaitymas').collection('books');
+
+  const totalBooks = await collection.countDocuments(settings.filter)
+  const data = await collection.aggregate([
     { $match: settings.filter },
     Object.keys(settings.order).length ? { $sort: settings.order } : { $sort: { publishDate: -1} },
     { $skip: settings.skip },
@@ -70,5 +73,5 @@ app.get('/allBooks', async (req, res) => {
   // console.log('data returned: ', data)
 
   client.close();
-  res.status(200).send(data);
+  res.status(200).send({ totalBooks, data});
 });
