@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import OneCard from "../UI/OneCard";
 import Sort from "../UI/Sort";
+import Filters from "../UI/Filters";
 
 const StyledSection = styled.section`
   display: grid;
@@ -28,17 +29,75 @@ const StyledSection = styled.section`
 const AllBooks = () => {
 
   const [books, setBooks] = useState([]);
+  const [formInputs, setFormInputs] = useState({
+    title: '',
+    genres_in: [],
+    publishDate_gte: '',
+    publishDate_lte: '',
+    available: false,
+  })
 
   let sortString = useRef('');
-  let filterString = useRef('')
+  let filterString = useRef('');
+
+  const formInputControl = (e) => {
+    if (e.target.type === 'checkbox') {
+      if (e.target.name === 'genres_in') {
+        if (e.target.checked) { // Add genre
+          setFormInputs({
+            ...formInputs,
+            [e.target.name]: [...formInputs.genres_in, e.target.value]
+          });
+        } else { // Remove genre
+          setFormInputs({
+            ...formInputs,
+            [e.target.name]: formInputs.genres_in.filter(genre => genre !== e.target.value)
+          });
+        }
+      } else { // Handle 'available' checkbox
+        setFormInputs({
+          ...formInputs,
+          [e.target.name]: e.target.checked
+        });
+      }
+    } else {
+      setFormInputs({
+        ...formInputs,
+        [e.target.name]: e.target.type === 'number' ? e.target.valueAsNumber : e.target.value
+      });
+    }
+  };
+
+  const fetchFiltered = (e) => {
+    e.preventDefault();
+
+    filterString.current = '';
+    Object.keys(formInputs).forEach(key => {
+      if (formInputs[key]) {
+        if (key === 'genres_in') {
+          if (Array.isArray(formInputs.genres_in) && formInputs.genres_in.length > 0) {
+            filterString.current += `filter_${key}=${formInputs[key].join(',')}&`;
+          }
+        } else if (key === 'available') {
+          if (formInputs.available) {
+            filterString.current += `filter_amountOfCopies_gte=1&`;
+          }
+        } else if (key === 'publishDate_gte' || key === 'publishDate_lte') {
+          filterString.current += `filter_${key}=${String(formInputs[key])}&`;
+        } else {
+          filterString.current += `filter_${key}=${formInputs[key]}&`;
+        }
+      }
+    });
+    fetch(`http://localhost:5500/allBooks?${filterString.current}&${sortString.current}`)
+      .then(res => res.json())
+      .then(data => setBooks(data));
+  }
 
   useEffect(() => {
     fetch('http://localhost:5500/allBooks')
       .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setBooks(data)
-      })
+      .then(data => setBooks(data))
   }, [])
 
   const fetchSorted = (e) => {
@@ -50,7 +109,13 @@ const AllBooks = () => {
 
   return (
     <StyledSection>
-      <div className="filtering"></div>
+      <div className="filtering">
+        <Filters
+          fetchFiltered={fetchFiltered}
+          formInputControl={formInputControl}
+          formInputs={formInputs}
+        />
+      </div>
       <div className="sorting">
         <Sort fetchSorted={fetchSorted} />
       </div>

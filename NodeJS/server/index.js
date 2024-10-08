@@ -42,10 +42,10 @@ app.get('/allBooks', async (req, res) => {
             if (key.split('_')[1] === 'genres') {
               settings.filter[key.split('_')[1]] = { $in: req.query[key].split(',') };
             } else {
-              settings.filter[key.split('_')[1]] = { [option]: Number(req.query[key]) };
+              settings.filter[key.split('_')[1]] = { [option]: req.query[key] };
             }
           } else {
-            settings.filter[key.split('_')[1]][option] = Number(req.query[key]);
+            settings.filter[key.split('_')[1]][option] = req.query[key];
           }
         }
       }
@@ -61,6 +61,7 @@ app.get('/allBooks', async (req, res) => {
 
   const client = await MongoClient.connect(CONNECT_URL);
   const data = await client.db('atsiskaitymas').collection('books').aggregate([
+    { $match: settings.filter },
     Object.keys(settings.order).length ? { $sort: settings.order } : { $sort: { publishDate: -1} },
     { $skip: settings.skip },
     { $limit: settings.limit },
